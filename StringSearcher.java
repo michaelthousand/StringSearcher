@@ -2,8 +2,9 @@ import java.io.*;
 
 public class StringSearcher {
     public static void main(String args[]) {
+        // Checks for proper arugments
         if (args.length != 2 ) {
-            System.out.println("Usage: java Module8 string filename");
+            System.out.println("Usage: java StringSearcher string filename");
             System.exit(0);
         }
 
@@ -11,6 +12,7 @@ public class StringSearcher {
         String filename = args[1];
         int strCount = 0;
 
+        // Opens a BufferedReader to utilize the readLine() method and search the text file for the string
         try {
             FileReader fr = new FileReader(filename);
             BufferedReader br = new BufferedReader(fr);
@@ -18,6 +20,7 @@ public class StringSearcher {
             while (true) {
                 line = br.readLine();
 
+                // Stops the search at the end of the file
                 if (line == null) {
                     break;
                 } 
@@ -29,6 +32,8 @@ public class StringSearcher {
             }
             fr.close();
             br.close();
+            
+        // Catch blocks for exception handling
         } catch (FileNotFoundException e) {
             System.out.println("The file doesn't exist: " + e.getMessage());
         } catch (IOException e) {
